@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/ui" },
+    { "path": "./packages/srs" },
+    { "path": "./packages/telugu-nlp" },
+    { "path": "./packages/media-ingest" },
+    { "path": "./apps/web" }
+  ]
+}

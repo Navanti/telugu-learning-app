@@ -1,0 +1,22 @@
+{
+  "name": "@telugu/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@telugu/media-ingest": "workspace:*",
+    "@telugu/srs": "workspace:*",
+    "@telugu/telugu-nlp": "workspace:*",
+    "@telugu/ui": "workspace:*",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
