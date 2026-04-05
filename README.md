@@ -1,23 +1,32 @@
 # Telugu Learning App Monorepo
 
-A TypeScript monorepo for a Telugu learning app inspired by Migaku. The repository is organized for clear separation of product surface area (`apps`) and reusable learning modules (`packages`).
+A TypeScript monorepo for a Telugu learning app inspired by **Migaku** (vocabulary acquisition, sentence mining, reader-based study, word-state tracking) and **Tae Kim’s Guide** (structured grammar teaching with examples).
+
+## Product overview
+The product vision is a connected learning loop:
+- Read Telugu text/media with a smart reader.
+- Track vocabulary as `unknown`, `learning`, or `known`.
+- Open in-context dictionary popups with transliteration and EN/JA gloss.
+- Learn grammar through structured lessons linked to reader content.
+- Practice in learn-to-read mode with pronunciation support.
+- Mine sentences into SRS cards with generated Telugu TTS audio.
+- Generate subtitles from Telugu audio when media lacks subtitle files.
 
 ## Repository layout
 
 - `apps/web` — Next.js web application shell.
 - `packages/ui` — shared UI primitives.
 - `packages/srs` — spaced repetition scheduling logic.
-- `packages/telugu-nlp` — Telugu text normalization utilities.
+- `packages/telugu-nlp` — Telugu text normalization/token utilities.
 - `packages/media-ingest` — subtitle/media ingestion utilities.
-- `docs` — documentation and architecture notes.
-- `.codex/agents` — local automation agent configs.
-- `.codex/skills` — local reusable skill definitions.
+- `docs` — product, roadmap, backlog, and architecture documentation.
 
-## Architecture
+## Architecture principles
 
-- **App layer** (`apps/web`): product composition, routing, and user flows.
-- **Package layer** (`packages/*`): framework-agnostic domain capabilities.
-- **Testing**: each package has focused unit tests using Vitest.
+- Keep deployable apps in `apps/*` and reusable domain modules in `packages/*`.
+- Keep shared packages framework-agnostic.
+- Export package APIs explicitly from `src/index.ts`.
+- Preserve Telugu Unicode fidelity; prefer NFC normalization.
 
 ## Quick start
 
@@ -35,9 +44,3 @@ Open `http://localhost:3000`.
 - `pnpm test` — run all tests.
 - `pnpm lint` — lint all workspaces.
 - `pnpm typecheck` — run TypeScript checks.
-
-## Notes for Telugu handling
-
-- Normalize Telugu text with NFC for consistency.
-- Avoid lossy transliteration in core storage and review logic.
-- Keep tokenizer/parser behavior explicit for punctuation and subtitle timing markers.
