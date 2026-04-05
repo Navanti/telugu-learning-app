@@ -8,10 +8,13 @@
     "dev": "concurrently -k \"pnpm --filter @telugu/web dev\" \"wait-on tcp:3000 && electron .\"",
     "build:web": "pnpm --filter @telugu/web build",
     "build": "tsc -p tsconfig.json",
-    "dist": "pnpm run build:web && pnpm run build && electron-builder --win nsis --x64",
+    "dist": "pnpm run build:web && pnpm run build && electron-builder --publish never",
     "lint": "tsc -p tsconfig.json --noEmit",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "dist:win": "pnpm run build:web && pnpm run build && electron-builder --win nsis --x64 --publish never",
+    "dist:mac": "pnpm run build:web && pnpm run build && electron-builder --mac dmg --x64 --arm64 --publish never",
+    "dist:linux": "pnpm run build:web && pnpm run build && electron-builder --linux AppImage --x64 --publish never"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
@@ -52,6 +55,32 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
+    },
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "category": "Education",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     }
   }
 }

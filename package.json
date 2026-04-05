@@ -15,7 +15,10 @@
     "typecheck": "pnpm -r typecheck",
     "format": "prettier --write .",
     "build:v2": "pnpm --filter @telugu/desktop dist",
-    "dev:desktop": "pnpm --filter @telugu/desktop dev"
+    "dev:desktop": "pnpm --filter @telugu/desktop dev",
+    "build:desktop:win": "pnpm --filter @telugu/desktop dist:win",
+    "build:desktop:mac": "pnpm --filter @telugu/desktop dist:mac",
+    "build:desktop:linux": "pnpm --filter @telugu/desktop dist:linux"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
