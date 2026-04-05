@@ -1,0 +1,57 @@
+{
+  "name": "@telugu/desktop",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Desktop distribution for Telugu Learning App",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"pnpm --filter @telugu/web dev\" \"wait-on tcp:3000 && electron .\"",
+    "build:web": "pnpm --filter @telugu/web build",
+    "build": "tsc -p tsconfig.json",
+    "dist": "pnpm run build:web && pnpm run build && electron-builder --win nsis --x64",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.telugu.learning.app",
+    "productName": "Telugu Learning App",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../web/out",
+        "to": "web"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
