@@ -41,9 +41,15 @@ importers:
 
   apps/web:
     dependencies:
+      '@telugu/dictionary':
+        specifier: workspace:*
+        version: link:../../packages/dictionary
       '@telugu/media-ingest':
         specifier: workspace:*
         version: link:../../packages/media-ingest
+      '@telugu/reader':
+        specifier: workspace:*
+        version: link:../../packages/reader
       '@telugu/srs':
         specifier: workspace:*
         version: link:../../packages/srs
@@ -53,6 +59,9 @@ importers:
       '@telugu/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@telugu/user-knowledge-state':
+        specifier: workspace:*
+        version: link:../../packages/user-knowledge-state
       next:
         specifier: ^15.1.0
         version: 15.5.14(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -63,7 +72,21 @@ importers:
         specifier: ^19.0.0
         version: 19.2.4(react@19.2.4)
 
+  packages/dictionary: {}
+
   packages/media-ingest: {}
+
+  packages/reader:
+    dependencies:
+      '@telugu/dictionary':
+        specifier: workspace:*
+        version: link:../dictionary
+      '@telugu/telugu-nlp':
+        specifier: workspace:*
+        version: link:../telugu-nlp
+      '@telugu/user-knowledge-state':
+        specifier: workspace:*
+        version: link:../user-knowledge-state
 
   packages/srs: {}
 
@@ -74,6 +97,8 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.2.4
+
+  packages/user-knowledge-state: {}
 
 packages:
 

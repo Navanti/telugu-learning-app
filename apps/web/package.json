@@ -17,6 +17,9 @@
     "@telugu/ui": "workspace:*",
     "next": "^15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@telugu/dictionary": "workspace:*",
+    "@telugu/reader": "workspace:*",
+    "@telugu/user-knowledge-state": "workspace:*"
   }
 }
