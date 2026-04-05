@@ -15,6 +15,7 @@ The product vision is a connected learning loop:
 ## Repository layout
 
 - `apps/web` — Next.js web application shell.
+- `apps/desktop` — Electron wrapper that packages a downloadable Windows installer (EXE).
 - `packages/ui` — shared UI primitives.
 - `packages/srs` — spaced repetition scheduling logic.
 - `packages/telugu-nlp` — Telugu text normalization/token utilities.
@@ -41,6 +42,8 @@ Open `http://localhost:3000`.
 
 - `pnpm dev` — run the Next.js app.
 - `pnpm build` — build all workspaces.
+- `pnpm build:v2` — build Version 2 desktop installer (`.exe`) via Electron Builder.
+- `pnpm dev:desktop` — run Electron desktop shell against local web dev server.
 - `pnpm test` — run all tests.
 - `pnpm lint` — lint all workspaces.
 - `pnpm typecheck` — run TypeScript checks.

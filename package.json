@@ -1,7 +1,7 @@
 {
   "name": "telugu-learning-app",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packageManager": "pnpm@9.12.3",
   "workspaces": [
     "apps/*",
@@ -13,7 +13,9 @@
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build:v2": "pnpm --filter @telugu/desktop dist",
+    "dev:desktop": "pnpm --filter @telugu/desktop dev"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
